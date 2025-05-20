@@ -55,6 +55,8 @@ export const updateUser = async (req, res) => {
 export const deleteUser = async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);
+    console.log("MONGODB_URI__", process.env.AWS_ACCESS_KEY_ID);
+
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
